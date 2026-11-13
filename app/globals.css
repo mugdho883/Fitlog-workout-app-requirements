@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { background: #0b0b0c; color: #f2f2f0; font-family: Inter, system-ui, sans-serif; }
+:focus-visible { outline: 2px solid #ccff00; outline-offset: 2px; }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-white transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .tag {
+    @apply rounded-full border border-line bg-black/50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-accent;
+  }
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.toast-in { animation: toast-in .2s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .toast-in, .animate-spin { animation: none !important; }
+}
